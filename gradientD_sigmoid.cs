@@ -1,29 +1,5 @@
-using System;
-
 class GradientDescent
 {
-    // Sigmoid activation: σ(z) = 1 / (1 + e⁻ᶻ)
-    static double Sigmoid(double z) => 1.0 / (1.0 + Math.Exp(-z));
-
-    // Sigmoid derivative: σ'(z) = σ(z) · (1 − σ(z))
-    static double SigmoidDerivative(double z) { double s = Sigmoid(z); return s * (1 - s); }
-
-    // Model: ŷ = σ(w0 + w1*x1 + w2*x2)
-    static double LinearCombination(double[] w, double[] x) => w[0] + w[1] * x[0] + w[2] * x[1];
-    static double Predict(double[] w, double[] x) => Sigmoid(LinearCombination(w, x));
-
-    // Loss: Binary Cross-Entropy = -(1/N) * Σ [ y·log(ŷ) + (1-y)·log(1-ŷ) ]
-    static double BCE(double[] w, double[][] X, double[] Y)
-    {
-        double loss = 0;
-        for (int i = 0; i < X.Length; i++)
-        {
-            double yHat = Predict(w, X[i]);
-            loss -= Y[i] * Math.Log(yHat) + (1 - Y[i]) * Math.Log(1 - yHat);
-        }
-        return loss / X.Length;
-    }
-
     // Gradient of BCE w.r.t. each weight (via chain rule):
     // ∂L/∂wⱼ = (1/N) * Σ (ŷ - y) * xⱼ     (bias: xⱼ = 1)
     static double[] Gradient(double[] w, double[][] X, double[] Y)
