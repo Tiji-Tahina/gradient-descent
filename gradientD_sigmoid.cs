@@ -52,25 +52,3 @@ class GradientDescent
         }
     }
 }
-// ```
-
-// ---
-
-// ### What changed
-
-// Two things were introduced:
-
-// **1. Sigmoid replaces the identity output**
-// ```
-// Before:  ŷ =      w₀ + w₁x₁ + w₂x₂       → ŷ ∈ (-∞, +∞)
-// After:   ŷ = σ(  w₀ + w₁x₁ + w₂x₂  )     → ŷ ∈ (0, 1)
-// ```
-
-// **2. BCE replaces MSE** — the natural loss for probabilistic outputs:
-// ```
-// L = − [ y·log(ŷ) + (1−y)·log(1−ŷ) ]
-// ```
-
-// **The elegant cancellation** — chain rule through BCE + sigmoid collapses neatly:
-// ```
-// ∂L/∂wⱼ = (ŷ − y) · xⱼ
