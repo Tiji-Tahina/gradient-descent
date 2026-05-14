@@ -4,23 +4,6 @@ class StochasticGradientDescent
 {
     static Random rng = new Random(42);
 
-    static double Sigmoid(double z) => 1.0 / (1.0 + Math.Exp(-z));
-
-    static double LinearCombination(double[] w, double[] x) => w[0] + w[1] * x[0] + w[2] * x[1];
-    static double Predict(double[] w, double[] x) => Sigmoid(LinearCombination(w, x));
-
-    // Loss on the full dataset (for monitoring only)
-    static double BCE(double[] w, double[][] X, double[] Y)
-    {
-        double loss = 0;
-        for (int i = 0; i < X.Length; i++)
-        {
-            double yHat = Predict(w, X[i]);
-            loss -= Y[i] * Math.Log(yHat) + (1 - Y[i]) * Math.Log(1 - yHat);
-        }
-        return loss / X.Length;
-    }
-
     // SGD: gradient computed on a single sample
     static double[] GradientOneSample(double[] w, double[] x, double y)
     {
@@ -80,20 +63,20 @@ class StochasticGradientDescent
         }
     }
 }
-```
+// ```
 
----
+// ---
 
-### What changed
+// ### What changed
 
-The single conceptual shift — **when** the weights are updated:
+// The single conceptual shift — **when** the weights are updated:
 
-| | Batch GD | Stochastic GD |
-|---|---|---|
-| Gradient computed over | all N samples | 1 sample |
-| Weights updated | once per epoch | N times per epoch |
-| Path to minimum | smooth | noisy but faster |
-| Memory needed | full dataset | one sample |
-```
-Batch:      w ← w − α · (1/N) Σ ∇L(xᵢ)      // one step per epoch
-SGD:        w ← w − α · ∇L(xᵢ)               // one step per sample
+// | | Batch GD | Stochastic GD |
+// |---|---|---|
+// | Gradient computed over | all N samples | 1 sample |
+// | Weights updated | once per epoch | N times per epoch |
+// | Path to minimum | smooth | noisy but faster |
+// | Memory needed | full dataset | one sample |
+// ```
+// Batch:      w ← w − α · (1/N) Σ ∇L(xᵢ)      // one step per epoch
+// SGD:        w ← w − α · ∇L(xᵢ)               // one step per sample
