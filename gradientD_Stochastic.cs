@@ -8,7 +8,7 @@ class StochasticGradientDescent
     static double[] GradientOneSample(double[] w, double[] x, double y)
     {
         double error = Predict(w, x) - y;
-        return new double[] { error, error * x[0], error * x[1] };
+        return [error, error * x[0], error * x[1]];
     }
 
     // Fisher-Yates shuffle — randomizes sample order each epoch
@@ -23,7 +23,7 @@ class StochasticGradientDescent
 
     static double[] Run(double[][] X, double[] Y, double learningRate, int epochs)
     {
-        double[] w = { 0.0, 0.0, 0.0 };
+        double[] w = [0.0, 0.0, 0.0];
         int N = X.Length;
         int[] indices = new int[N];
         for (int i = 0; i < N; i++) indices[i] = i;
