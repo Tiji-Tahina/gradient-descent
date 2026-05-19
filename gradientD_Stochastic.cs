@@ -63,20 +63,3 @@ class StochasticGradientDescent
         }
     }
 }
-// ```
-
-// ---
-
-// ### What changed
-
-// The single conceptual shift — **when** the weights are updated:
-
-// | | Batch GD | Stochastic GD |
-// |---|---|---|
-// | Gradient computed over | all N samples | 1 sample |
-// | Weights updated | once per epoch | N times per epoch |
-// | Path to minimum | smooth | noisy but faster |
-// | Memory needed | full dataset | one sample |
-// ```
-// Batch:      w ← w − α · (1/N) Σ ∇L(xᵢ)      // one step per epoch
-// SGD:        w ← w − α · ∇L(xᵢ)               // one step per sample
