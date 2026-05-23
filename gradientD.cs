@@ -29,10 +29,3 @@ class GradientDescent
         Console.WriteLine($"\nFound minimum at x ≈ {minimum:F6}");
     }
 }
-```
-
----
-
-### How it works
-```
-x ← x − α · f'(x)

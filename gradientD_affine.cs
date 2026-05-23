@@ -64,16 +64,3 @@ class GradientDescent
         Console.WriteLine(  "Target  weights: w0=3.000, w1=2.000, w2=-1.000");
     }
 }
-```
-
----
-
-### What changed
-```
-Scalar x  →  weight vector  w = [w₀, w₁, w₂]
-f'(x)     →  gradient vector  ∇L = [∂L/∂w₀, ∂L/∂w₁, ∂L/∂w₂]
-```
-
-The update rule is the same, now applied component-wise:
-```
-w ← w − α · ∇L
