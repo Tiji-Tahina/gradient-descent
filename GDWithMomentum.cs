@@ -4,22 +4,6 @@ class SGDWithMomentum
 {
     static Random rng = new Random(42);
 
-    static double Sigmoid(double z) => 1.0 / (1.0 + Math.Exp(-z));
-
-    static double LinearCombination(double[] w, double[] x) => w[0] + w[1] * x[0] + w[2] * x[1];
-    static double Predict(double[] w, double[] x) => Sigmoid(LinearCombination(w, x));
-
-    static double BCE(double[] w, double[][] X, double[] Y)
-    {
-        double loss = 0;
-        for (int i = 0; i < X.Length; i++)
-        {
-            double yHat = Predict(w, X[i]);
-            loss -= Y[i] * Math.Log(yHat) + (1 - Y[i]) * Math.Log(1 - yHat);
-        }
-        return loss / X.Length;
-    }
-
     static double[] GradientOneSample(double[] w, double[] x, double y)
     {
         double error = Predict(w, x) - y;
@@ -83,27 +67,3 @@ class SGDWithMomentum
         }
     }
 }
-```
-
----
-
-### What changed
-
-One new vector, one new equation:
-```
-velocity ← β · velocity + (1 − β) · ∇L      // exponential moving average
-w        ← w − α · velocity                  // step follows accumulated direction
-```
-
-| | SGD | SGD + Momentum |
-|---|---|---|
-| Driven by | raw gradient | smoothed gradient history |
-| Noisy gradients | amplified | dampened |
-| Consistent direction | no acceleration | builds up speed |
-| New hyperparameter | — | β (typically 0.9) |
-
-**The physical intuition** — a ball rolling down a hill:
-```
-β = 0.0  →  no memory, pure SGD (ball has no mass)
-β = 0.9  →  strong memory, smooth acceleration (ball builds momentum)
-β = 1.0  →  infinite memory, gradient ignored (ball never stops)
