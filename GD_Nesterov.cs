@@ -4,22 +4,6 @@ class NesterovAcceleratedGradient
 {
     static Random rng = new Random(42);
 
-    static double Sigmoid(double z) => 1.0 / (1.0 + Math.Exp(-z));
-
-    static double LinearCombination(double[] w, double[] x) => w[0] + w[1] * x[0] + w[2] * x[1];
-    static double Predict(double[] w, double[] x) => Sigmoid(LinearCombination(w, x));
-
-    static double BCE(double[] w, double[][] X, double[] Y)
-    {
-        double loss = 0;
-        for (int i = 0; i < X.Length; i++)
-        {
-            double yHat = Predict(w, X[i]);
-            loss -= Y[i] * Math.Log(yHat) + (1 - Y[i]) * Math.Log(1 - yHat);
-        }
-        return loss / X.Length;
-    }
-
     static double[] GradientOneSample(double[] w, double[] x, double y)
     {
         double error = Predict(w, x) - y;
@@ -90,21 +74,3 @@ class NesterovAcceleratedGradient
         }
     }
 }
-```
-
----
-
-### What changed
-
-One conceptual shift — **where** the gradient is evaluated:
-```
-Momentum:  grad = ∇L( w )                  // gradient at current position
-Nesterov:  grad = ∇L( w − β · velocity )   // gradient at look-ahead position
-```
-
-The three-step loop makes the idea explicit:
-```
-1.  wLookAhead ← w − β · velocity          // project where momentum leads
-2.  grad       ← ∇L( wLookAhead )          // evaluate gradient there
-3.  velocity   ← β · velocity + (1−β) · grad
-    w          ← w − α · velocity
