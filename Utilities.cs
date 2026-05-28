@@ -1,6 +1,6 @@
 namespace utilities
 {
-    public class Functions
+    public class Functions // Is that naming descriptive enough? I don't know, but it is what it is.
     {
         public double Sigmoid(double z)
         {
@@ -43,5 +43,9 @@ namespace utilities
                 loss += Math.Pow(yPred - y[i]);
             }
         }
+
+        public static void Shuffle<T> (T[] array, Random rng){}
+
+        public static double Dot(double[] w, double[] x){}
     }
 }
