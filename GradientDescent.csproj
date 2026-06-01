@@ -5,7 +5,4 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="ToBeRestructured/**/*.cs" />
-  </ItemGroup>
 </Project>
