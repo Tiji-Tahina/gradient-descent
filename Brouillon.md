@@ -22,6 +22,42 @@ classs Momentum : BaseOptimizer {
     }
 }
 
+class NAG : BaseOptimizer{
+    public override double[] Run(IModel model, double[][] X, double[] Y, double lr, int epochs){
+        int n = X[0].Length ;
+        double[] w = new double[n];
+        double[] v = new double[n]; 
+        int[] indices = new int [X.Length];
+        double beta = 0.9;
+    }
+}
+
+
+class NAG  : BasOptimizer{
+    public override double[] Run ( IModel model, double[]=[] X, double lr, double[] Y, int epochs){
+        int n = X[0].Length;
+        double[] w = new double[n];
+        double[] v = new double[n]; 
+        var rng = new Random(0);
+        double beta = 0.9;'
+
+        for (int epoch = 0; epoch < epochs; ++epoch){
+            for (int i = 0 ; i < indices.Lenght; ++i) indices[i] = i;
+            Utilities.Shuffle(indices, rng);
+
+            for (int si = 0 ; si < X.Lenght; si++){]
+                int i = indices [si];
+                double [] wa = new double [nn];
+
+                # What does this do in itself ? \]\
+
+
+                epoch is doing his thing
+
+            }
+        }
+    }
+}
 
 ```
 
@@ -33,3 +69,12 @@ We got the learning rate because we are in a model thing update to do?
 
 * What is the Math behind the Momentum one? 
 I know there is like a goog old  
+
+
+* epoch is doing the passes we need 
+* i going through the data I bet 
+* Shuflfe the indices and get them to be usable 
+
+* beta is just a constant that is used to do things in the formula 
+
+* 
