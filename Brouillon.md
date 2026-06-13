@@ -77,4 +77,21 @@ I know there is like a goog old
 
 * beta is just a constant that is used to do things in the formula 
 
-* 
+* After updating the indices, what do we actually do to deserve anything back? 
+```
+double[] wa = new double[n]; 
+for (int j = 0; j < n; j++)
+    wa[j] = w[j] + beta * v[j]; 
+
+double[] grad = modle.GradientOne(wa, X[i], Y[i])
+
+double[] grad = model.GradientOne(wa, X[i], Y[i])
+
+model.
+
+public static MSE(double[][] X, double[] Yhat, double[] Y) { ... }
+
+
+```
+
+* double[] wa = new double[n];
