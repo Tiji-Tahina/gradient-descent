@@ -83,7 +83,7 @@ double[] wa = new double[n];
 for (int j = 0; j < n; j++)
     wa[j] = w[j] + beta * v[j]; 
 
-double[] grad = modle.GradientOne(wa, X[i], Y[i])
+double[] grad = modle.GradientOne(wa, X[i-], Y[i])
 
 double[] grad = model.GradientOne(wa, X[i], Y[i])
 
@@ -91,7 +91,25 @@ model.
 
 public static MSE(double[][] X, double[] Yhat, double[] Y) { ... }
 
+class Momentum : BaseOptimizer{
+    protected override void Step (double[] w, double[] grad, double lr){
+        double beta = 0.9;
+        for (int j = 0; j < w.Length; ++j){
+            state[j] = beta * state[j] + (1 - beta) * grad[j];
+            w[j] -= lr * state[j];
+        }
+    }
+}
 
+
+class NAG : BaseOptimizer 
+{
+    public override double[] Run
+}
 ```
+
+* Why is this one on the Base Optimizer called Run and not something else like step in the Momentum one?
+
+* They all have the public virtual double[] Run method that is making 
 
 * double[] wa = new double[n];
