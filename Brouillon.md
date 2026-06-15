@@ -113,3 +113,16 @@ class NAG : BaseOptimizer
 * They all have the public virtual double[] Run method that is making 
 
 * double[] wa = new double[n];
+
+```
+abstract class BaseOptimizer
+{
+    public virtual double[] Run(IModel model, double[][] X,  double[] Ym double lr, double[] state, ){
+        for (int i = 0; i < epochs; ++i){
+            for (x : X){
+                
+            }
+        }
+    }
+}
+```
