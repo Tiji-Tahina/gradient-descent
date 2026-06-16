@@ -126,3 +126,16 @@ abstract class BaseOptimizer
     }
 }
 ```
+```
+using System;
+
+static class Utilities{
+    static void Shuffle<T>(T[] array, Random rng){
+        for (i = array.Length() - 1; i > 0; i--){
+            int j = rng.Next(i + 1);
+            (array[i], array[j]) = ( array[j], array[i]);
+        }
+    }
+}
+
+```
