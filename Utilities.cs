@@ -13,15 +13,15 @@ static class Utilities{
         return sum;
     }
 
-    public static double MSE(double[] yTrue, double[] yPred)
+    public static double MSE(double[] yTrue, double[] yPred) // yPred is already predicted and in a list
     {
         double sum = 0;
         for (int i = 0; i < yTrue.Length; i++)
         {
-            double err = yPred[i] - yTrue[i];
-            sum += err * err;
+            double error = yTrue[i] - yPred[i];
+            sum += error * error;
         }
-        return sum / yTrue.Length;
+        return sum / yTrue.Length; 
     }
 
     public static double BCE(double[] yTrue, double[] yPred)
