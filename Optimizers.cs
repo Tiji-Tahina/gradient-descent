@@ -6,7 +6,7 @@ abstract class BaseOptimizer
     {
         int n = X[0].Length;
         double[] w = new double[n];
-        double[] state = new double[n];
+        double[] state = new double[n]; // for Momentum and Adam
         var rng = new Random(0);
         int[] indices = new int[X.Length];
 
