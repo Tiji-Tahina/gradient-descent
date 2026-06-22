@@ -1,6 +1,7 @@
 using System;
 
-abstract class BaseOptimizer
+abstract class BaseOptimizer // Why not an interface? 
+// Because we want to provide a default implementation for Run() that can be overridden by subclasses.
 {
     public virtual double[] Run(IModel model, double[][] X, double[] Y, double lr, int epochs)
     {
@@ -19,6 +20,7 @@ abstract class BaseOptimizer
             {
                 int i = indices[si];
                 double[] grad = model.GradientOne(w, X[i], Y[i]);
+                // double[] grad = model.GradientOne(w, X[i], Y[i]);
                 Step(w, grad, ref state, lr);
             }
 

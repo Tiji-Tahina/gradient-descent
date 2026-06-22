@@ -1,5 +1,7 @@
 using System;
 
+// The models are used to make the gradients. They then define the surface we are going to traverse
+
 interface IModel
 {
     double Predict(double[] w, double[] x);
@@ -40,6 +42,7 @@ class LinearModel : IModel
     public double[] GradientOne(double[] w, double[] x, double y)
     {
         double err = Predict(w, x) - y;
+        // simple declaration de la variable grad que l'on va utiliser plus tard
         double[] grad = new double[w.Length];
         for (int j = 0; j < w.Length; j++)
             grad[j] = 2.0 * err * x[j];
